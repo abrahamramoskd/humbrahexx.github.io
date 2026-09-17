@@ -431,10 +431,14 @@
   <ul class="nav-links" role="list">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
+    <!-- ░░ OCULTO: enlace a sección Beneficios (sección comentada más abajo) ░░
     <li><a href="#beneficios">Beneficios</a></li>
+    ░░ FIN OCULTO ░░ -->
     <li><a href="#portafolio">Portafolio</a></li>
     <li><a href="#showreel">Demos</a></li>
+    <!-- ░░ OCULTO: enlace a sección Testimonios (sección comentada más abajo) ░░
     <li><a href="#testimonios">Clientes</a></li>
+    ░░ FIN OCULTO ░░ -->
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#repos">Repositorios</a></li>
     <li>
@@ -469,7 +473,7 @@
 Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicado al desarrollo de páginas web, tiendas en línea, software empresarial y soluciones multimedia para negocios locales y regionales.
     </p>
 
-    <!-- ★ NUEVO: Social proof badge -->
+    <!-- ░░░░░ OCULTO: Social proof badge — "Todos nuestros clientes confían en nosotros" ░░░░░
     <div class="hero-social-proof">
       <div class="avatars">
         <div class="av">JR</div>
@@ -478,6 +482,7 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
       </div>
       <span>Todos <strong>nuestros clientes</strong> confían en nosotros</span>
     </div>
+    ░░░░░ FIN OCULTO ░░░░░ -->
 
     <div class="hero-actions">
       <a href="https://wa.me/528281050910?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n"
@@ -613,6 +618,7 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
 <!-- ═══════════════════════════════════════════════
      BENEFICIOS
 ════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░ OCULTO: sección completa "Por qué elegirnos / Resultados que transforman negocios" ░░░░░░░░░░
 <section id="beneficios" aria-labelledby="beneficios-title">
   <div class="container">
     <div class="benefits-layout">
@@ -684,6 +690,7 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
     </div>
   </div>
 </section>
+░░░░░░░░░░ FIN OCULTO: BENEFICIOS ░░░░░░░░░░ -->
 
 <!-- ═══════════════════════════════════════════════
      ★ NUEVO: PROCESO — cómo trabajamos
@@ -963,6 +970,7 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
 <!-- ═══════════════════════════════════════════════
      ★ NUEVO: TESTIMONIOS
 ════════════════════════════════════════════════ -->
+<!-- ░░░░░░░░░░ OCULTO: sección completa "Lo que dicen nuestros clientes" (testimonios) ░░░░░░░░░░
 <section id="testimonios" aria-labelledby="testimonios-title">
   <div class="container">
     <header class="section-header reveal">
@@ -1015,6 +1023,7 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
     </div>
   </div>
 </section>
+░░░░░░░░░░ FIN OCULTO: TESTIMONIOS ░░░░░░░░░░ -->
 
 <!-- ═══════════════════════════════════════════════
      NOSOTROS
@@ -1492,6 +1501,72 @@ Somos un estudio digital establecido en Cadereyta Jiménez, Nuevo León, dedicad
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
     });
   });
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     ★ PROTECCIÓN: bloqueo de clic derecho, F12,
+     atajos de DevTools, ver-código y arrastre/selección
+     de imágenes. Es una barrera disuasiva, NO seguridad real.
+════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  // ── 1. Bloquear menú contextual (clic derecho) ──────────────
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    return false;
+  }, false);
+
+  // ── 2. Bloquear atajos de teclado de DevTools / código ──────
+  document.addEventListener('keydown', function (e) {
+    var key = (e.key || '').toLowerCase();
+
+    // F12
+    if (e.key === 'F12' || e.keyCode === 123) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+
+    // Ctrl+Shift+I / J / C / K  (Inspector, Consola, Selector)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey &&
+        (key === 'i' || key === 'j' || key === 'c' || key === 'k')) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+
+    // Cmd+Option+I / J / C / U  (macOS)
+    if (e.metaKey && e.altKey &&
+        (key === 'i' || key === 'j' || key === 'c' || key === 'u')) {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+
+    // Ctrl+U  (ver código fuente)
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && key === 'u') {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+
+    // Ctrl+S  (guardar página)
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && key === 's') {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+
+    // Ctrl+P  (imprimir / exportar a PDF)  — comenta esta línea si quieres permitir imprimir
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && key === 'p') {
+      e.preventDefault(); e.stopPropagation(); return false;
+    }
+  }, true);
+
+  // ── 3. Evitar arrastrar imágenes y videos ───────────────────
+  document.addEventListener('dragstart', function (e) {
+    var t = e.target.tagName;
+    if (t === 'IMG' || t === 'VIDEO') { e.preventDefault(); return false; }
+  }, false);
+
+  // ── 4. Limpiar la consola periódicamente ────────────────────
+  setInterval(function () {
+    try { console.clear(); } catch (err) {}
+  }, 3000);
+
+})();
 </script>
 
 </body>
